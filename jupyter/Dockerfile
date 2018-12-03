@@ -1,7 +1,5 @@
 FROM jupyter/pyspark-notebook
 
-RUN id -g jovyan
-
 USER root
 # Add essential packages
 RUN apt-get update
@@ -14,7 +12,6 @@ RUN apt-get update && apt-get install -y locales \
 
 # Add password
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/
-RUN chmod -R 777 /home/jovyan/
 
 USER $NB_USER
 RUN ls -la  ~/
