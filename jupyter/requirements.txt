@@ -1,5 +1,10 @@
+s3fs
+pyodbc
+azure.storage.blob
 scrapy
 selenium
+psycopg2
+pyarrow
 pyspark
 nltk
 jupyter_contrib_nbextensions
