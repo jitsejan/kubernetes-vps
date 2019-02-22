@@ -22,9 +22,10 @@ RUN apt-get update && apt-get install -y locales \
 RUN wget https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql/msodbcsql_13.1.9.2-1_amd64.deb
 RUN apt-get install -y libc6 libstdc++6 libkrb5-3 libcurl3 openssl debconf unixodbc unixodbc-dev
 RUN ACCEPT_EULA=Y dpkg -i msodbcsql_13.1.9.2-1_amd64.deb
-#RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-#RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
-#RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql # unixodbc-dev
+
+# Spark
+RUN wget http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar -P $SPARK_HOME/jars/
+RUN wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar -P $SPARK_HOME/jars/
 
 # Add password
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/
@@ -45,5 +46,3 @@ COPY custom.css /home/jovyan/.jupyter/custom/
 # NB extensions
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
-# 
-RUN mkdir -p /home/jovyan/.local
