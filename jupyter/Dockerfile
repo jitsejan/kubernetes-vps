@@ -30,7 +30,6 @@ RUN ACCEPT_EULA=Y dpkg -i msodbcsql_13.1.9.2-1_amd64.deb
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/
 
 USER $NB_USER
-RUN ls -la  ~/
 # Install geckodriver
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz 
 RUN tar -zxvf geckodriver-v0.23.0-linux64.tar.gz
@@ -46,3 +45,5 @@ COPY custom.css /home/jovyan/.jupyter/custom/
 # NB extensions
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
+# 
+RUN mkdir -p /home/jovyan/.local

@@ -5,4 +5,4 @@ c.NotebookApp.password = u'sha1:b3af1b4adee9:9e86cb52435cc24db0b487451c10f6d3487
 #c.NotebookApp.port = 5006
 c.NotebookApp.allow_origin = '*' 
 c.InteractiveShell.ast_node_interactivity = "all"
-
+c.NotebookApp.notebook_dir = "/home/jovyan/work/"

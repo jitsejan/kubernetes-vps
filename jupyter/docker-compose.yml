@@ -1,28 +1,19 @@
-version: '3'
+version: '3.2'
 
 services:
   anaconda:
-    user: root
-    privileged: true
     image: jitsejan/pyspark-notebook
     restart: always
     expose:
       - 8888
     volumes:
-      - ./notebooks/notebook-vps:/opt/notebooks
-      - ./data:/opt/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/jitsejan/notebooks:/home/jovyan/work/
     environment:
       VIRTUAL_HOST: jupyter.jitsejan.com
-      VIRTUAL_PORT: 5006
       LETSENCRYPT_HOST: jupyter.jitsejan.com
       LETSENCRYPT_EMAIL: mail@jitsejan.com
       GRANT_SUDO: 'yes'
     container_name: pyspark-notebook
-
-volumes:
-    notebooks:
-    data:
 
 networks:
   default:
