@@ -26,7 +26,10 @@ RUN ACCEPT_EULA=Y dpkg -i msodbcsql_13.1.9.2-1_amd64.deb
 # Spark
 RUN wget http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar -P $SPARK_HOME/jars/
 RUN wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar -P $SPARK_HOME/jars/
-
+RUN wget http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.3/hadoop-azure-2.7.3.jar -P $SPARK_HOME/jars/
+RUN wget http://central.maven.org/maven2/com/microsoft/azure/azure-storage/6.1.0/azure-storage-6.1.0.jar -P $SPARK_HOME/jars/
+RUN wget http://central.maven.org/maven2/com/microsoft/azure/azure-sqldb-spark/1.0.2/azure-sqldb-spark-1.0.2.jar -P $SPARK_HOME/jars/
+RUN wget http://central.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/7.0.0.jre8/mssql-jdbc-7.0.0.jre8.jar -P $SPARK_HOME/jars/
 # Add password
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/
 
@@ -46,3 +49,4 @@ COPY custom.css /home/jovyan/.jupyter/custom/
 # NB extensions
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
+
