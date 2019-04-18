@@ -3,7 +3,7 @@ pyodbc
 azure.storage.blob
 scrapy
 selenium
-psycopg2
+psycopg2-binary
 pyarrow
 pyspark
 nltk

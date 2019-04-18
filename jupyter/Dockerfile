@@ -11,6 +11,10 @@ RUN phantomjs --version
 RUN apt-get install -y libappindicator3-1
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
+# Terraform
+RUN wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+RUN unzip terraform_0.11.13_linux_amd64.zip
+RUN mv terraform /usr/local/bin
 
 # Set locale
 RUN apt-get update && apt-get install -y locales \
